@@ -12,9 +12,9 @@ namespace DataStructures
             items = new T[5];
             count = 0;
         }
-        public List(int someItem)
+        public List(int quantityofItem)
         {
-            items = new T[0];
+            items = new T[quantityofItem];
             count = 0;
         }
         public void Add(T item)
