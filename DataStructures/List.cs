@@ -12,24 +12,23 @@ namespace DataStructures
             items = new T[5];
             count = 0;
         }
-        public List(int index)
+        public List(int someItem)
         {
-            items = new T[index];
-            count = index;
+            items = new T[0];
+            count = 0;
         }
-
         public void Add(T item)
         {
-            items[count] = item;
-            count++;
             if (count == items.Length)
             {
                 IncrementList(items);
             }
+            items[count] = item;
+            count++;
 
         }
 
-        public void IncrementList(T[] listToIncrement)
+        private void IncrementList(T[] listToIncrement)
         {
             T[] longList = new T[listToIncrement.Length + 5];
             Array.Copy(listToIncrement, longList, listToIncrement.Length);
@@ -52,6 +51,10 @@ namespace DataStructures
         }
         public void RemoveAt(int index)
         {
+            if (index >= count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             T[] AuxList = items;
             Array.Copy(AuxList, index + 1, items, index, count - index);
             count--;
